@@ -1,6 +1,6 @@
 package kap.coder.allen.com.baselib
 
-class ModelBus : IModelAdapter {
+class ModelBus {
 
 
     companion object {
