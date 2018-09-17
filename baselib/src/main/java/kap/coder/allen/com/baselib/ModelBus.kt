@@ -1,9 +1,6 @@
-package kap.coder.allen.com.baselib.modelA
+package kap.coder.allen.com.baselib
 
-import kap.coder.allen.com.baselib.IAction
-import kap.coder.allen.com.baselib.IModelAdapter
-
-class ModelAAdapter : IModelAdapter {
+class ModelBus : IModelAdapter {
 
 
     companion object {
