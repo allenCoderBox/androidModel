@@ -4,6 +4,15 @@ class ModelBus {
 
 
     companion object {
+
+
+        val LIST = mutableSetOf<IAction>()
+
+
+        fun register(other: IAction) {
+            LIST.add(other)
+        }
+
         fun buildAction(action: String, unSupport: () -> Unit = {}): IAction? {
             try {
                 val clazz = Class.forName(action)
@@ -21,6 +30,11 @@ class ModelBus {
             }
             return null
         }
+
+
+
+
+
     }
 
 

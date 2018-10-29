@@ -49,3 +49,20 @@ dependencies {
 
 
 }
+
+
+
+
+apply plugin: 'auto-register'
+project.ext.registerInfoList = [
+        [
+                'scanInterface'          : 'kap.coder.allen.com.baselib.IAction'
+                , 'codeInsertToClassName': 'kap.coder.allen.com.baselib.ModleBuss'
+                , 'registerMethodName'   : 'register' //
+        ]
+]
+
+autoregister {
+    registerInfo = registerInfoList
+    cacheEnabled = true
+}
