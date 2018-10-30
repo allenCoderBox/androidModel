@@ -1,0 +1,44 @@
+//根据property选择依赖方式，0采用project形式编译，1采用aar形式编译，2不编译
+
+
+
+def runtimeOnlyArr(groupId, modulePath) {
+    version = '1.0.0'
+    def uri = "$groupId:$modulePath:$version@aar"
+    project.println(uri)
+    dependencies.implementation "$groupId:$modulePath:$version@aar"
+}
+
+
+
+
+
+task publishLocalMaven {
+    group = "msm"
+    finalizedBy 'uploadArchives'
+    doLast {
+        apply plugin: 'maven'
+        uploadArchives {
+            repositories.mavenDeployer {
+                repository(url: 'file://' + project.rootDir.path + '/localMaven')
+                pom.groupId = GROUP_ID
+                pom.artifactId = project.name
+                pom.version = "1.0.0"
+            }
+        }
+
+        uploadArchives.doFirst {
+            println "START publish aar:" + project.name + " " + project.version + " " + project.rootDir
+        }
+
+        uploadArchives.doLast {
+            println "End publish aar:" + project.name + " " + project.version
+        }
+    }
+}
+
+
+
+ext {
+    runtimeOnlyArr = this.&runtimeOnlyArr
+}
