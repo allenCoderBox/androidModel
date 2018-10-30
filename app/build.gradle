@@ -6,6 +6,9 @@ apply plugin: 'kotlin-android-extensions'
 
 
 
+
+
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -16,6 +19,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -30,27 +34,30 @@ android {
     }
 }
 
+//String GROUP_ID = 'kap.coder.allen.com'
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.+'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
 
     if (IsBuildMudle.toBoolean()) {
-        implementation project(':baselib')
+        runtimeOnlyArr(GROUP_ID, 'baselib')
     } else {
-        implementation project(':modela')
-        implementation project(':modleb')
-        implementation project(':baselib')
+        runtimeOnlyArr(GROUP_ID, 'modela')
+        runtimeOnlyArr(GROUP_ID, 'modleb')
+        runtimeOnlyArr(GROUP_ID, 'baselib')
     }
-
-
 }
 
-
+def runtimeOnlyArr(groupId, modulePath) {
+    version = '1.0.0'
+    def uri = "$groupId:$modulePath:$version@aar"
+    project.println(uri)
+    dependencies.compile "$groupId:$modulePath:$version@aar"
+}
 
 
 apply plugin: 'auto-register'
