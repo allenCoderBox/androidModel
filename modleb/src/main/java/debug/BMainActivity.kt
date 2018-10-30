@@ -8,7 +8,7 @@ import kap.coder.allen.com.baselib.ModelBus
 import kap.coder.allen.com.modleb.R
 import kotlinx.android.synthetic.main.modle_b_layout.*
 
-class MainActivity : Activity() {
+class BMainActivity : Activity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,8 +16,8 @@ class MainActivity : Activity() {
         setContentView(R.layout.modle_b_layout)
         this.button.setOnClickListener {
             ModelBus.buildAction("kap.action.PageAAction", unSupport = {
-                Toast.makeText(this@MainActivity, "不支持",Toast.LENGTH_LONG).show()
-            })?.action(ActionContext.create(this@MainActivity))
+                Toast.makeText(this@BMainActivity, "不支持",Toast.LENGTH_LONG).show()
+            })?.action(ActionContext.create(this@BMainActivity))
         }
     }
 }

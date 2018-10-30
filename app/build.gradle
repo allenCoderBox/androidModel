@@ -48,6 +48,8 @@ dependencies {
     } else {
         runtimeOnlyArr(GROUP_ID, 'modela')
         runtimeOnlyArr(GROUP_ID, 'modleb')
+//        implementation project(':modleb')
+//        implementation project(':modela')
         implementation project(':baselib')
     }
 }

@@ -51,9 +51,9 @@ android {
 
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
-//                java {
-//                    exclude 'debug/**'
-//                }
+                java {
+                    exclude 'debug/**'
+                }
             }
         }
     }
