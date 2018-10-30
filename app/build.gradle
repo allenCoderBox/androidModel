@@ -44,20 +44,17 @@ dependencies {
 
 
     if (IsBuildMudle.toBoolean()) {
-        runtimeOnlyArr(GROUP_ID, 'baselib')
+        implementation project(':baselib')
     } else {
         runtimeOnlyArr(GROUP_ID, 'modela')
         runtimeOnlyArr(GROUP_ID, 'modleb')
-        runtimeOnlyArr(GROUP_ID, 'baselib')
+        implementation project(':baselib')
     }
 }
 
-def runtimeOnlyArr(groupId, modulePath) {
-    version = '1.0.0'
-    def uri = "$groupId:$modulePath:$version@aar"
-    project.println(uri)
-    dependencies.compile "$groupId:$modulePath:$version@aar"
-}
+
+
+
 
 
 apply plugin: 'auto-register'
