@@ -34,10 +34,13 @@ android {
         main {
             if (IsBuildMudle.toBoolean()) {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+                java{
+                    srcDir 'src/main/debug'
+                }
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 java {
-                    exclude 'debug/**'
+                    exclude 'src/main/debug/**'
                 }
             }
         }
